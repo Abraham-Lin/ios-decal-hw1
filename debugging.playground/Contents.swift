@@ -17,12 +17,12 @@ class Foo {
     init (words: [String?]) {
         wordA = words[0]?
         wordB = words[1]?
+        //wordA = words[0]!
+        //wordB = words[1]!
     }
     
 //: [EXPLAIN YOUR ANSWER TO Q1 HERE]
-    
-
-    
+    You are forcing wordA and wordB to be a string, but you give them the option to be nil.
 //: ## Q2: Variable Types and Function Types
 //: Why does the compiler dislike the for loop? Also, what should we return?
     
@@ -30,7 +30,7 @@ class Foo {
         let reversedWords = words.map() {String($0.characters.reverse())}
         var numElements = words.count
         
-        for let i = 0; i < numElements; i++ {
+        for var i = 0; i < numElements; i++ {
             if words[i] != reversedWords[i] {
                 return false
             }
@@ -40,9 +40,7 @@ class Foo {
     }
     
 //: [EXPLAIN YOUR ANSWER TO Q2 HERE]
-    
-    
-    
+    You are intitiating i using let, but it is not a constant because it is being iterated through. 
 //: ## Q3: More functions, and object initialization
 //: The method should be returning true or false -- what's wrong?
 //: Are we initializing the dictionary correctly?
@@ -86,8 +84,8 @@ class Foo {
 }
 
 //: [EXPLAIN YOUR ANSWER TO Q3 HERE]
-
-
+If the two latter for loops do not return false, that means the words are anagrams. Therefore the return nil should be a return true. 
+    
 //: **Do not** change anything below.
 //: You should be able to call the methods as is.
 Foo.isAnagram("anagram", wordB: "managra")
